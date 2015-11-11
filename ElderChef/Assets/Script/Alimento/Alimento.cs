@@ -6,6 +6,14 @@ public class Alimento : MonoBehaviour
 
     public Rigidbody2D rig;
 
+    public SpriteRenderer sprite;
+
+    public int nCozimento;
+
+    bool sumiu;
+
+    int cozinho;
+    int frito;
     int minX;
     int maxX;
     int bloco;
@@ -13,11 +21,21 @@ public class Alimento : MonoBehaviour
 	void Start ()
     {
         Jogar(-5, 0);
+        cozinho = nCozimento;
+        frito = nCozimento;
 	}
 	
 	void Update ()
     {
         bloco = PlayerMovment.player.bloco;
+        if(cozinho <= 0 && frito > 0)
+        {
+            sprite.color = Color.blue;
+        }
+        else if(frito <= 0)
+        {
+            sprite.color = Color.black;
+        }
 	}
 
     public void Calcula()
@@ -25,6 +43,7 @@ public class Alimento : MonoBehaviour
         if (bloco != 1)
         {
             minX = bloco * -1;
+            minX += 1;
         }
         else
         {
@@ -44,8 +63,27 @@ public class Alimento : MonoBehaviour
     {
         if(other.gameObject.tag == "Player")
         {
+            if (cozinho > 0)
+            {
+                cozinho -= 1;
+            }
+            else if(frito > 0)
+            {
+                frito -= 1;
+            }
+            else
+            {
+                sumiu = true;
+            }
             Calcula();
             Jogar(minX, maxX);
+        }
+        if(other.gameObject.tag == "Mascote")
+        {
+            if(cozinho <= 0 && frito > 0)
+            {
+                Destroy(gameObject);
+            }
         }
     }
 }
