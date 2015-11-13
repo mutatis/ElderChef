@@ -1,15 +1,42 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class LevelManager : MonoBehaviour {
+public class LevelManager : MonoBehaviour
+{
+    public static LevelManager levelManager;
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    public Probabilidade probabilidade;
+
+    public Transform[] posCreated;
+
+    public GameObject[] comida;
+
+    public float tempo;
+
+    public int comeu;
+
+    void Awake()
+    {
+        levelManager = this;
+    }
+
+    void Start()
+    {
+        int x = Random.Range(0, posCreated.Length);
+        Instantiate(comida[probabilidade.ChooseAlimento()], posCreated[x].position, transform.rotation);
+        StartCoroutine("Created");
+    }
+
+    void Update()
+    {
+
+    }
+
+    IEnumerator Created()
+    {
+        yield return new WaitForSeconds(tempo);
+        int x = Random.Range(0, posCreated.Length);
+        Instantiate(comida[probabilidade.ChooseAlimento()], posCreated[x].position, transform.rotation);
+        StartCoroutine("Created");
+    }
 }

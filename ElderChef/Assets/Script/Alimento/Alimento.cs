@@ -20,7 +20,14 @@ public class Alimento : MonoBehaviour
 
 	void Start ()
     {
-        Jogar(-5, 0);
+        if (transform.position.x > 0)
+        {
+            Jogar(-5, 0);
+        }
+        else if (transform.position.x < 0)
+        {
+            Jogar(0, 5);
+        }
         cozinho = nCozimento;
         frito = nCozimento;
 	}
@@ -50,7 +57,6 @@ public class Alimento : MonoBehaviour
             minX = 0;
         }
         maxX = ((bloco - 5) * -1);
-        print(minX + "+" + maxX + "+" + bloco);
     }
 
     public void Jogar(int min, int max)
@@ -82,6 +88,7 @@ public class Alimento : MonoBehaviour
         {
             if(cozinho <= 0 && frito > 0)
             {
+                LevelManager.levelManager.comeu += 1;
                 Destroy(gameObject);
             }
         }
