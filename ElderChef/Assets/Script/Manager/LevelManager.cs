@@ -9,7 +9,7 @@ public class LevelManager : MonoBehaviour
 
     public Transform[] posCreated;
 
-    public GameObject[] comida;
+    public GameObject[] alimento;
 
     public float tempo;
 
@@ -23,7 +23,7 @@ public class LevelManager : MonoBehaviour
     void Start()
     {
         int x = Random.Range(0, posCreated.Length);
-        Instantiate(comida[probabilidade.ChooseAlimento()], posCreated[x].position, transform.rotation);
+        Instantiate(alimento[probabilidade.ChooseAlimento()], posCreated[x].position, transform.rotation);
         StartCoroutine("Created");
     }
 
@@ -36,7 +36,7 @@ public class LevelManager : MonoBehaviour
     {
         yield return new WaitForSeconds(tempo);
         int x = Random.Range(0, posCreated.Length);
-        Instantiate(comida[probabilidade.ChooseAlimento()], posCreated[x].position, transform.rotation);
+        Instantiate(alimento[probabilidade.ChooseAlimento()], posCreated[x].position, transform.rotation);
         StartCoroutine("Created");
     }
 }
