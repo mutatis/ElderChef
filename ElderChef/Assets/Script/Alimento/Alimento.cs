@@ -9,25 +9,28 @@ public class Alimento : MonoBehaviour
     public SpriteRenderer sprite;
 
     public int nCozimento;
+    [HideInInspector]
+    public int cozinho;
+    [HideInInspector]
+    public int frito;
+
+    Vector2 x;
+    
+    float dist;
 
     bool sumiu;
+    bool segue;
 
-    int cozinho;
-    int frito;
+    int escolha;
     int minX;
     int maxX;
     int bloco;
 
 	void Start ()
     {
-        if (transform.position.x > 0)
-        {
-            Jogar(-5, 0);
-        }
-        else if (transform.position.x < 0)
-        {
-            Jogar(0, 5);
-        }
+        Jogar(0, Limits.limit.trans.Length);
+        minX = 0;
+        maxX = Limits.limit.trans.Length;
         cozinho = nCozimento;
         frito = nCozimento;
 	}
@@ -43,27 +46,29 @@ public class Alimento : MonoBehaviour
         {
             sprite.color = Color.black;
         }
+        if(segue)
+        {
+            dist = Vector2.Distance(Limits.limit.trans[escolha].position, transform.position);
+            if(dist > 0.3)
+            {
+                transform.position = Vector2.Lerp(transform.position, new Vector2(x.x, transform.position.y), Time.deltaTime * 2);
+                //transform.Translate(x);
+            }
+            else
+            {
+                segue = false;
+            }
+        }
 	}
-
-    public void Calcula()
-    {
-        if (bloco != 1)
-        {
-            minX = bloco * -1;
-            minX += 1;
-        }
-        else
-        {
-            minX = 0;
-        }
-        maxX = ((bloco - 5) * -1);
-    }
 
     public void Jogar(int min, int max)
     {
-        int x = Random.Range(min, max);
+        escolha = Random.Range(min, max);
+        x = Limits.limit.trans[escolha].position;
+        print(x);
         int y = 10;
-        rig.velocity = new Vector3(x, y, 0);
+        rig.velocity = new Vector3(0, y, 0);
+        segue = true;
     }
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -81,16 +86,7 @@ public class Alimento : MonoBehaviour
             {
                 sumiu = true;
             }
-            Calcula();
             Jogar(minX, maxX);
-        }
-        if(other.gameObject.tag == "Mascote")
-        {
-            if(cozinho <= 0 && frito > 0)
-            {
-                LevelManager.levelManager.comeu += 1;
-                Destroy(gameObject);
-            }
         }
     }
 }
