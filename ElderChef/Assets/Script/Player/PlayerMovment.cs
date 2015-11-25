@@ -8,6 +8,8 @@ public class PlayerMovment : MonoBehaviour
     public SpriteRenderer sprite;
 
     public Sprite[] images;
+
+    public Animator anim;
     
     public float velX;
 
@@ -59,6 +61,7 @@ public class PlayerMovment : MonoBehaviour
 
     IEnumerator GO()
     {
+        anim.SetBool("Run", true);
         isMov = true;
         for (int i = 0; i < 3; i++)
         {
@@ -76,6 +79,7 @@ public class PlayerMovment : MonoBehaviour
             yield return new WaitForSeconds(0.1f);
         }
         isMov = false;
+        anim.SetBool("Run", false);
         StopCoroutine("GO");
     }
 }

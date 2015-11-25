@@ -20,11 +20,11 @@ public class DagonBoca : MonoBehaviour
         if (other.gameObject.tag == "Alimento")
         {
             obj = other.gameObject;
-          //  if (obj.GetComponent<Alimento>().cozinho <= 0 && obj.GetComponent<Alimento>().frito > 0)
-         //   {
+            if (obj.GetComponent<Alimento>().cozinho <= 0 && obj.GetComponent<Alimento>().frito > 0)
+            {
                 dagon.SetTrigger("Mastiga");
                 StartCoroutine("GO");
-           // }
+            }
         }
     }
 }
