@@ -65,7 +65,6 @@ public class Alimento : MonoBehaviour
     {
         escolha = Random.Range(min, max);
         x = Limits.limit.trans[escolha].position;
-        print(x);
         int y = 10;
         rig.velocity = new Vector3(0, y, 0);
         segue = true;
