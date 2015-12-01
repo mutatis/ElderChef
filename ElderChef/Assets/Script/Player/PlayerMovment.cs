@@ -76,7 +76,7 @@ public class PlayerMovment : MonoBehaviour
                 sprite.sprite = images[0];
                 nImage = 0;
             }
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.06f);
         }
         isMov = false;
         anim.SetBool("Run", false);
