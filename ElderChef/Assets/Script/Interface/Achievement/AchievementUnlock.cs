@@ -8,9 +8,10 @@ public class AchievementUnlock : MonoBehaviour
 
 	void Update ()
     {
-	    if(Input.GetKeyDown(KeyCode.Space))
+	    if(PlayerPrefs.GetInt("Panelada") == 3 && PlayerPrefs.GetInt("UnlockPanelator") == 0)
         {
-            Unlock("GGGGGG");
+            Unlock("Panelator");
+            PlayerPrefs.SetInt("UnlockPanelator", 1);
         }
 	}
 

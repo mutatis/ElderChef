@@ -86,6 +86,7 @@ public class Alimento : MonoBehaviour
                 sumiu = true;
             }
             Jogar(minX, maxX);
+            PlayerPrefs.SetInt("Panelada", (PlayerPrefs.GetInt("Panelada") + 1));
         }
     }
 }
