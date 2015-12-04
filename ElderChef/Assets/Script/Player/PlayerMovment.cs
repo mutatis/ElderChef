@@ -17,6 +17,7 @@ public class PlayerMovment : MonoBehaviour
     public int bloco = 3;
 
     bool isMov;
+    bool pode;
 
     int nImage;
     int num;
@@ -28,13 +29,16 @@ public class PlayerMovment : MonoBehaviour
 
 	void Update ()
     {
-        if (!isMov)
+        if (!isMov && !pode)
         {
             if (Input.GetKeyDown(KeyCode.LeftArrow))
             {
                 if (transform.localScale.x > 0)
                 {
-                    transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+                    anim.SetFloat("Vira", -1);
+                    anim.SetTrigger("Esquerda");
+                    pode = true;
+                   // transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
                 }
                 else if (bloco > 1)
                 {
@@ -47,7 +51,10 @@ public class PlayerMovment : MonoBehaviour
             {
                 if (transform.localScale.x < 0)
                 {
-                    transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+                    anim.SetFloat("Vira", 1);
+                    anim.SetTrigger("Direita");
+                    pode = true;
+                    // transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
                 }
                 else if (bloco < 5)
                 {
@@ -59,11 +66,24 @@ public class PlayerMovment : MonoBehaviour
         }
     }
 
+    public void ViroDireita()
+    {
+        pode = false;
+         transform.localScale = new Vector3(1.25f, transform.localScale.y, transform.localScale.z);
+    }
+
+    public void ViroEsquerda()
+    {
+        pode = false;
+        transform.localScale = new Vector3(-1.25f, transform.localScale.y, transform.localScale.z);
+    }
+
     public void Esquerda()
     {
         if (transform.localScale.x > 0)
         {
-            transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+            anim.SetTrigger("Esquerda");
+            //transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
         }
         else if (bloco > 1)
         {
@@ -78,7 +98,8 @@ public class PlayerMovment : MonoBehaviour
     {
         if (transform.localScale.x < 0)
         {
-            transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+            anim.SetTrigger("Direita");
+            //transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
         }
         else if (bloco < 5)
         {
