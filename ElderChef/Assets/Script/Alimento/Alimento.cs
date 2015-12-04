@@ -69,9 +69,10 @@ public class Alimento : MonoBehaviour
         rig.velocity = new Vector3(0, y, 0);
         segue = true;
     }
+
     void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.gameObject.tag == "Player")
+        if(other.gameObject.tag == "Panela")
         {
             if (cozinho > 0)
             {
@@ -87,6 +88,10 @@ public class Alimento : MonoBehaviour
             }
             Jogar(minX, maxX);
             PlayerPrefs.SetInt("Panelada", (PlayerPrefs.GetInt("Panelada") + 1));
+        }
+        else if(other.gameObject.tag == "Chao")
+        {
+            PlayerController.player.life -= 1;
         }
     }
 }

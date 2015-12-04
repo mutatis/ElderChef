@@ -59,6 +59,36 @@ public class PlayerMovment : MonoBehaviour
         }
     }
 
+    public void Esquerda()
+    {
+        if (transform.localScale.x > 0)
+        {
+            transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+        }
+        else if (bloco > 1)
+        {
+            bloco -= 1;
+            num = -1;
+            StopCoroutine("GO");
+            StartCoroutine("GO");
+        }
+    }
+
+    public void Direita()
+    {
+        if (transform.localScale.x < 0)
+        {
+            transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+        }
+        else if (bloco < 5)
+        {
+            bloco += 1;
+            num = 1;
+            StopCoroutine("GO");
+            StartCoroutine("GO");
+        }
+    }
+
     IEnumerator GO()
     {
         anim.SetBool("Run", true);
@@ -81,5 +111,13 @@ public class PlayerMovment : MonoBehaviour
         isMov = false;
         anim.SetBool("Run", false);
         StopCoroutine("GO");
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Alimento")
+        {
+            anim.SetTrigger("Fritando");
+        }
     }
 }
