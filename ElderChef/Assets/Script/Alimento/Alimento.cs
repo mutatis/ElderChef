@@ -51,7 +51,7 @@ public class Alimento : MonoBehaviour
             dist = Vector2.Distance(Limits.limit.trans[escolha].position, transform.position);
             if(dist > 0.3)
             {
-                transform.position = Vector2.Lerp(transform.position, new Vector2(x.x, transform.position.y), Time.deltaTime * 2);
+                transform.position = Vector2.Lerp(transform.position, new Vector2(x.x, transform.position.y), Time.deltaTime * 4);
                 //transform.Translate(x);
             }
             else
@@ -94,6 +94,7 @@ public class Alimento : MonoBehaviour
             {
                 maxX = escolha + 2;
             }
+            print(minX + maxX);
             Jogar(minX, maxX);
             PlayerPrefs.SetInt("Panelada", (PlayerPrefs.GetInt("Panelada") + 1));
         }
