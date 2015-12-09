@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
     {
         if(life <= 0)
         {
-            //GameOver
+            //Morreu
         }
     }
 }

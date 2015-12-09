@@ -86,6 +86,14 @@ public class Alimento : MonoBehaviour
             {
                 sumiu = true;
             }
+            if (escolha > 2)
+            {
+                minX = escolha - 2;
+            }
+            if (escolha < 4)
+            {
+                maxX = escolha + 2;
+            }
             Jogar(minX, maxX);
             PlayerPrefs.SetInt("Panelada", (PlayerPrefs.GetInt("Panelada") + 1));
         }
