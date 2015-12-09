@@ -14,4 +14,9 @@ public class GameOverInterface : MonoBehaviour
 
         text.text = "Você fez " + pontos + " pontos jogo mal seu lixo!!!";
     }
+
+    public void Restart(string level)
+    {
+        Application.LoadLevel(level);
+    }
 }
