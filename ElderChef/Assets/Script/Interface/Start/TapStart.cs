@@ -11,7 +11,6 @@ public class TapStart : MonoBehaviour
 
     public void Click(GameObject obj)
     {
-        print("OOOOII");
         Time.timeScale = 1;
         Destroy(obj);
     }
