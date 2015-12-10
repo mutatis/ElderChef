@@ -69,7 +69,7 @@ public class PlayerMovment : MonoBehaviour
     public void ViroDireita()
     {
         pode = false;
-         transform.localScale = new Vector3(1.25f, transform.localScale.y, transform.localScale.z);
+        transform.localScale = new Vector3(1.25f, transform.localScale.y, transform.localScale.z);
     }
 
     public void ViroEsquerda()
