@@ -86,11 +86,11 @@ public class Alimento : MonoBehaviour
             {
                 sumiu = true;
             }
-            if (escolha > 2)
+            if (escolha > 1)
             {
                 minX = escolha - 2;
             }
-            if (escolha < 4)
+            if (escolha < 3)
             {
                 maxX = escolha + 2;
             }

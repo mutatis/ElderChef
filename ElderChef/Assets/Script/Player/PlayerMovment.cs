@@ -80,33 +80,41 @@ public class PlayerMovment : MonoBehaviour
 
     public void Esquerda()
     {
-        if (transform.localScale.x > 0)
+        if (!pode)
         {
-            anim.SetTrigger("Esquerda");
-            //transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
-        }
-        else if (bloco > 1)
-        {
-            bloco -= 1;
-            num = -1;
-            StopCoroutine("GO");
-            StartCoroutine("GO");
+            if (transform.localScale.x > 0)
+            {
+                anim.SetTrigger("Esquerda");
+                pode = true;
+                //transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+            }
+            else if (bloco > 1)
+            {
+                bloco -= 1;
+                num = -1;
+                StopCoroutine("GO");
+                StartCoroutine("GO");
+            }
         }
     }
 
     public void Direita()
     {
-        if (transform.localScale.x < 0)
+        if (!pode)
         {
-            anim.SetTrigger("Direita");
-            //transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
-        }
-        else if (bloco < 5)
-        {
-            bloco += 1;
-            num = 1;
-            StopCoroutine("GO");
-            StartCoroutine("GO");
+            if (transform.localScale.x < 0)
+            {
+                anim.SetTrigger("Direita");
+                pode = true;
+                //transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+            }
+            else if (bloco < 5)
+            {
+                bloco += 1;
+                num = 1;
+                StopCoroutine("GO");
+                StartCoroutine("GO");
+            }
         }
     }
 
@@ -114,9 +122,9 @@ public class PlayerMovment : MonoBehaviour
     {
         anim.SetBool("Run", true);
         isMov = true;
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < 6; i++)
         {
-            transform.Translate((velX * num)/3, 0, 0);
+            transform.Translate((velX * num)/3.5f, 0, 0);
             if (nImage == 0)
             {
                 sprite.sprite = images[1];
@@ -127,7 +135,7 @@ public class PlayerMovment : MonoBehaviour
                 sprite.sprite = images[0];
                 nImage = 0;
             }
-            yield return new WaitForSeconds(0.06f);
+            yield return new WaitForSeconds(0.02f);
         }
         isMov = false;
         anim.SetBool("Run", false);
