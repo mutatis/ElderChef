@@ -99,13 +99,12 @@ public class Alimento : MonoBehaviour
             {
                 maxX = escolha + 2;
             }
-            print(minX + maxX);
             Jogar(minX, maxX);
             PlayerPrefs.SetInt("Panelada", (PlayerPrefs.GetInt("Panelada") + 1));
         }
         else if(other.gameObject.tag == "Chao")
         {
-            PlayerController.player.life -= 1;
+            PlayerController.player.PerdeVida(1);
         }
     }
 }

@@ -5,12 +5,14 @@ public class DagonBoca : MonoBehaviour
 {
     public Animator dagon;
 
+    public AudioClip eat;
+
     GameObject obj;
 
     IEnumerator GO()
     {
         yield return new WaitForSeconds(0.15f);
-        LevelManager.levelManager.comeu += 1;
+        LevelManager.levelManager.AddPonto(1);
         Destroy(obj);
         StopCoroutine("GO");
     }
@@ -22,6 +24,7 @@ public class DagonBoca : MonoBehaviour
             obj = other.gameObject;
             if (obj.GetComponent<Alimento>().cozinho <= 0 && obj.GetComponent<Alimento>().frito > 0)
             {
+                AudioSource.PlayClipAtPoint(eat, new Vector3(0, 0, -10));
                 dagon.SetTrigger("Mastiga");
                 StartCoroutine("GO");
             }

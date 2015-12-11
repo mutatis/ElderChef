@@ -38,6 +38,11 @@ public class LevelManager : MonoBehaviour
         }
     }
 
+    public void AddPonto(int qntPonto)
+    {
+        comeu += qntPonto;
+    }
+
     IEnumerator Created()
     {
         yield return new WaitForSeconds(tempo);

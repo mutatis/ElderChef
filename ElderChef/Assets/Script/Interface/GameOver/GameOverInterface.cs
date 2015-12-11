@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameOverInterface : MonoBehaviour
 {
@@ -17,6 +18,6 @@ public class GameOverInterface : MonoBehaviour
 
     public void Restart(string level)
     {
-        Application.LoadLevel(level);
+        SceneManager.LoadScene(level);
     }
 }
