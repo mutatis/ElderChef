@@ -15,6 +15,8 @@ public class LevelManager : MonoBehaviour
 
     public int comeu;
 
+    bool isPlay;
+
     void Awake()
     {
         levelManager = this;
@@ -22,14 +24,18 @@ public class LevelManager : MonoBehaviour
 
     void Start()
     {
-        int x = Random.Range(0, posCreated.Length);
-        Instantiate(alimento[probabilidade.ChooseAlimento()], posCreated[x].position, transform.rotation);
-        StartCoroutine("Created");
+
     }
 
     void Update()
     {
-
+        if(!isPlay && Time.timeScale == 1)
+        {
+            int x = Random.Range(0, posCreated.Length);
+            Instantiate(alimento[probabilidade.ChooseAlimento()], posCreated[x].position, transform.rotation);
+            StartCoroutine("Created");
+            isPlay = true;
+        }
     }
 
     IEnumerator Created()

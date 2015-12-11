@@ -8,6 +8,9 @@ public class Alimento : MonoBehaviour
 
     public SpriteRenderer sprite;
 
+    public AudioClip bate;
+    public AudioClip joga;
+
     public int nCozimento;
     [HideInInspector]
     public int cozinho;
@@ -28,6 +31,7 @@ public class Alimento : MonoBehaviour
 
 	void Start ()
     {
+        AudioSource.PlayClipAtPoint(joga, new Vector3(0, 0, -10));
         Jogar(0, Limits.limit.trans.Length);
         minX = 0;
         maxX = Limits.limit.trans.Length;
@@ -74,6 +78,7 @@ public class Alimento : MonoBehaviour
     {
         if(other.gameObject.tag == "Panela")
         {
+            AudioSource.PlayClipAtPoint(bate, new Vector3(0, 0, -10));
             if (cozinho > 0)
             {
                 cozinho -= 1;

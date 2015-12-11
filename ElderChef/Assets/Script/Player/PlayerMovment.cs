@@ -5,6 +5,8 @@ public class PlayerMovment : MonoBehaviour
 {
     public static PlayerMovment player;
 
+    public AudioClip[] mexe;
+
     public SpriteRenderer sprite;
 
     public Sprite[] images;
@@ -35,6 +37,7 @@ public class PlayerMovment : MonoBehaviour
             {
                 if (transform.localScale.x > 0)
                 {
+                    AudioSource.PlayClipAtPoint(mexe[1], new Vector3(0, 0, -10));
                     anim.SetFloat("Vira", -1);
                     anim.SetTrigger("Esquerda");
                     pode = true;
@@ -44,6 +47,7 @@ public class PlayerMovment : MonoBehaviour
                 {
                     bloco -= 1;
                     num = -1;
+                    AudioSource.PlayClipAtPoint(mexe[0], new Vector3(0, 0, -10));
                     StartCoroutine("GO");
                 }
             }
@@ -51,6 +55,7 @@ public class PlayerMovment : MonoBehaviour
             {
                 if (transform.localScale.x < 0)
                 {
+                    AudioSource.PlayClipAtPoint(mexe[1], new Vector3(0, 0, -10));
                     anim.SetFloat("Vira", 1);
                     anim.SetTrigger("Direita");
                     pode = true;
@@ -60,6 +65,7 @@ public class PlayerMovment : MonoBehaviour
                 {
                     bloco += 1;
                     num = 1;
+                    AudioSource.PlayClipAtPoint(mexe[0], new Vector3(0, 0, -10));
                     StartCoroutine("GO");
                 }
             }
@@ -84,6 +90,7 @@ public class PlayerMovment : MonoBehaviour
         {
             if (transform.localScale.x > 0)
             {
+                AudioSource.PlayClipAtPoint(mexe[1], new Vector3(0, 0, -10));
                 anim.SetTrigger("Esquerda");
                 pode = true;
                 //transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
@@ -92,6 +99,7 @@ public class PlayerMovment : MonoBehaviour
             {
                 bloco -= 1;
                 num = -1;
+                AudioSource.PlayClipAtPoint(mexe[0], new Vector3(0, 0, -10));
                 StopCoroutine("GO");
                 StartCoroutine("GO");
             }
@@ -102,6 +110,7 @@ public class PlayerMovment : MonoBehaviour
     {
         if (!pode)
         {
+            AudioSource.PlayClipAtPoint(mexe[1], new Vector3(0, 0, -10));
             if (transform.localScale.x < 0)
             {
                 anim.SetTrigger("Direita");
@@ -112,6 +121,7 @@ public class PlayerMovment : MonoBehaviour
             {
                 bloco += 1;
                 num = 1;
+                AudioSource.PlayClipAtPoint(mexe[0], new Vector3(0, 0, -10));
                 StopCoroutine("GO");
                 StartCoroutine("GO");
             }
