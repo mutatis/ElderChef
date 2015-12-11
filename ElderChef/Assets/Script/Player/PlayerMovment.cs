@@ -43,7 +43,7 @@ public class PlayerMovment : MonoBehaviour
                     pode = true;
                    // transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
                 }
-                else if (bloco > 1)
+                else if (bloco > 2)
                 {
                     bloco -= 1;
                     num = -1;
@@ -95,7 +95,7 @@ public class PlayerMovment : MonoBehaviour
                 pode = true;
                 //transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
             }
-            else if (bloco > 1)
+            else if (bloco > 2)
             {
                 bloco -= 1;
                 num = -1;
