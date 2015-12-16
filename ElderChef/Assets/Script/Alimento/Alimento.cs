@@ -36,7 +36,7 @@ public class Alimento : MonoBehaviour
         minX = 0;
         maxX = Limits.limit.trans.Length;
         cozinho = nCozimento;
-        frito = nCozimento;
+        frito = nCozimento / 2;
 	}
 	
 	void Update ()

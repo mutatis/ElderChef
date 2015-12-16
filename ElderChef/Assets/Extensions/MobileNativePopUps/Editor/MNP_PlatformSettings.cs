@@ -12,7 +12,7 @@ public class MNP_PlatformSettings : ScriptableObject {
 	private const string ISNSettingsAssetName = "MNPSettings";
 	private const string ISNSettingsPath = "Extensions/MobileNativePopUps/Resources";
 	private const string ISNSettingsAssetExtension = ".asset";
-	public const string VERSION_NUMBER = "3.9";
+	public const string VERSION_NUMBER = "4.0";
 
 	private static MNP_PlatformSettings instance = null;
 

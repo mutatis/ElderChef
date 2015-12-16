@@ -32,6 +32,7 @@
 
 + (id) sharedInstance;
 + (int) majorIOSVersion;
++ (BOOL) IsIPad;
 
 - (void) redirectToRatingPage: (NSString *) appId;
 - (void) setApplicationBagesNumber:(int) count;
@@ -95,7 +96,7 @@
 
 
 + (IOSNativeNotificationCenter *)sharedInstance;
-- (void) scheduleNotification: (int) time message: (NSString*) message sound: (bool *)sound alarmID:(NSString *)alarmID badges: (int)badges notificationData: (NSString*) notificationData;
+- (void) scheduleNotification: (int) time message: (NSString*) message sound: (bool *)sound alarmID:(NSString *)alarmID badges: (int)badges notificationData: (NSString*) notificationData notificationSoundName: (NSString*) notificationSoundName;
 - (void) cleanUpLocalNotificationWithAlarmID: (NSString *)alarmID;
 - (void) cancelNotifications;
 - (void) applicationIconBadgeNumber: (int)badges;

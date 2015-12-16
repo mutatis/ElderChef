@@ -20,7 +20,7 @@ public static class FileStaticAPI
 		if(!IsFileExists(fileName)) {
 			CreateFolder (fileName.Substring (0, fileName.LastIndexOf ('/')));
 
-			#if UNITY_4 || UNITY_5_0
+			#if UNITY_4 || UNITY_5
 
 			FileStream stream = File.Create (GetFullPath (fileName));
 			stream.Close();
@@ -81,11 +81,13 @@ public static class FileStaticAPI
 		}
 	}
 	
-	public static void DeleteFile(string fileName) {
+	public static void DeleteFile(string fileName, bool refresh = true) {
 		if (IsFileExists (fileName)) {
 			File.Delete(GetFullPath(fileName));
-			
-			AssetDatabase.Refresh();
+
+			if (refresh) {
+				AssetDatabase.Refresh();
+			}
 		}
 	}
 	
@@ -137,13 +139,15 @@ public static class FileStaticAPI
 		#endif
 	}
 	
-	public static void DeleteFolder(string folderPath) {
+	public static void DeleteFolder(string folderPath, bool refresh = true) {
 		#if !UNITY_WEBPLAYER
 		if (IsFolderExists (folderPath)) {
 
 			Directory.Delete(GetFullPath(folderPath), true);
-			
-			AssetDatabase.Refresh();
+
+			if (refresh) {
+				AssetDatabase.Refresh();
+			}
 		}
 		#endif
 
