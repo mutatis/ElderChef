@@ -55,9 +55,9 @@ public class Alimento : MonoBehaviour
         if(segue)
         {
             dist = Vector2.Distance(Limits.limit.trans[escolha].position, transform.position);
-            if(dist > 0.3)
+            if(dist > 0.05f)
             {
-                transform.position = Vector2.Lerp(transform.position, new Vector2(x.x, transform.position.y), Time.deltaTime * 4);
+                transform.position = Vector2.Lerp(transform.position, new Vector2(x.x, transform.position.y), Time.deltaTime * 1);
             }
             else
             {
@@ -70,7 +70,7 @@ public class Alimento : MonoBehaviour
     {
         escolha = Random.Range(min, max);
         x = Limits.limit.trans[escolha].position;
-        int y = 10;
+        float y = 7.5f;
         rig.velocity = new Vector3(0, y, 0);
         segue = true;
     }
