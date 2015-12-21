@@ -41,7 +41,6 @@ public class PlayerMovment : MonoBehaviour
                     anim.SetFloat("Vira", -1);
                     anim.SetTrigger("Esquerda");
                     pode = true;
-                   // transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
                 }
                 else if (bloco > 2)
                 {
@@ -59,7 +58,6 @@ public class PlayerMovment : MonoBehaviour
                     anim.SetFloat("Vira", 1);
                     anim.SetTrigger("Direita");
                     pode = true;
-                    // transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
                 }
                 else if (bloco < 5)
                 {
@@ -83,7 +81,7 @@ public class PlayerMovment : MonoBehaviour
         pode = false;
         transform.localScale = new Vector3(-1.25f, transform.localScale.y, transform.localScale.z);
     }
-
+    
     public void Esquerda()
     {
         if (!pode)
@@ -93,7 +91,6 @@ public class PlayerMovment : MonoBehaviour
                 AudioSource.PlayClipAtPoint(mexe[1], new Vector3(0, 0, -10));
                 anim.SetTrigger("Esquerda");
                 pode = true;
-                //transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
             }
             else if (bloco > 2)
             {
@@ -105,7 +102,7 @@ public class PlayerMovment : MonoBehaviour
             }
         }
     }
-
+    
     public void Direita()
     {
         if (!pode)
@@ -115,7 +112,6 @@ public class PlayerMovment : MonoBehaviour
             {
                 anim.SetTrigger("Direita");
                 pode = true;
-                //transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
             }
             else if (bloco < 5)
             {

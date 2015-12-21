@@ -13,7 +13,7 @@ public class LevelManager : MonoBehaviour
 
     public float tempo;
 
-    public int comeu;
+    public int pontos;
 
     bool isPlay;
 
@@ -40,7 +40,7 @@ public class LevelManager : MonoBehaviour
 
     public void AddPonto(int qntPonto)
     {
-        comeu += qntPonto;
+        pontos += qntPonto;
     }
 
     IEnumerator Created()

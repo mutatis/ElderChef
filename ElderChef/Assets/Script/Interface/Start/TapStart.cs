@@ -11,6 +11,7 @@ public class TapStart : MonoBehaviour
 
     public void Click(GameObject obj)
     {
+        PlayerPrefs.SetInt("Jogadas", PlayerPrefs.GetInt("Jogadas") + 1);
         Time.timeScale = 1;
         Destroy(obj);
     }

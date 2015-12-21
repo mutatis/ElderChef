@@ -11,7 +11,7 @@ public class Pontos : MonoBehaviour
     
     void Update()
     {
-        pontos = LevelManager.levelManager.comeu;
+        pontos = LevelManager.levelManager.pontos;
         text.text = pontos.ToString();
     }	
 }

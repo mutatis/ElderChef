@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour
 
     public int pontos;
 
+    bool isSave;
+
     void Awake()
     {
         DontDestroyOnLoad(gameObject);
@@ -15,9 +17,24 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if(LevelManager.levelManager.comeu > 0)
+        if(LevelManager.levelManager.pontos > 0)
         {
-            pontos = LevelManager.levelManager.comeu;
+            pontos = LevelManager.levelManager.pontos;
         }
+        
+        if(PlayerController.player.life < 1 && !isSave)
+        {
+            SavePontos();
+        }
+        else if(PlayerController.player.life > 0)
+        {
+            isSave = false;
+        }
+    }
+
+    void SavePontos()
+    {
+        PlayerPrefs.SetInt("Pontos", PlayerPrefs.GetInt("Pontos") + LevelManager.levelManager.pontos);
+        isSave = true;
     }
 }

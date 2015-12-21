@@ -11,6 +11,8 @@ public class Alimento : MonoBehaviour
     public AudioClip bate;
     public AudioClip joga;
 
+    public string tipo;
+
     public int nCozimento;
     [HideInInspector]
     public int cozinho;
@@ -56,7 +58,6 @@ public class Alimento : MonoBehaviour
             if(dist > 0.3)
             {
                 transform.position = Vector2.Lerp(transform.position, new Vector2(x.x, transform.position.y), Time.deltaTime * 4);
-                //transform.Translate(x);
             }
             else
             {
@@ -99,11 +100,16 @@ public class Alimento : MonoBehaviour
             {
                 maxX = escolha + 2;
             }
+            
+            PlayerPrefs.SetInt(tipo, PlayerPrefs.GetInt(tipo) + 1);
+            
             Jogar(minX, maxX);
+            LevelManager.levelManager.AddPonto(1);
             PlayerPrefs.SetInt("Panelada", (PlayerPrefs.GetInt("Panelada") + 1));
         }
         else if(other.gameObject.tag == "Chao")
         {
+            PlayerPrefs.SetInt("ErroDagon", PlayerPrefs.GetInt("ErroDagon") + 1);
             PlayerController.player.PerdeVida(1);
         }
     }
