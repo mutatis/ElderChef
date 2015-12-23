@@ -33,6 +33,7 @@ public class Alimento : MonoBehaviour
 
 	void Start ()
     {
+        LevelManager.levelManager.AddItem(gameObject);
         AudioSource.PlayClipAtPoint(joga, new Vector3(0, 0, -10));
         Jogar(0, Limits.limit.trans.Length);
         minX = 0;
@@ -101,6 +102,20 @@ public class Alimento : MonoBehaviour
                 maxX = escolha + 2;
             }
             
+            if(PlayerController.player.pimenta)
+            {
+                if (cozinho > 0)
+                {
+                    cozinho -= 1;
+                }
+                else if (frito > 0)
+                {
+                    frito -= 1;
+                }
+                LevelManager.levelManager.AddPonto(1);
+                PlayerPrefs.SetInt("Panelada", (PlayerPrefs.GetInt("Panelada") + 1));
+            }
+
             PlayerPrefs.SetInt(tipo, PlayerPrefs.GetInt(tipo) + 1);
             
             Jogar(minX, maxX);
@@ -110,6 +125,7 @@ public class Alimento : MonoBehaviour
         else if(other.gameObject.tag == "Chao")
         {
             PlayerPrefs.SetInt("ErroDagon", PlayerPrefs.GetInt("ErroDagon") + 1);
+            LevelManager.levelManager.RemoveItem(gameObject);
             PlayerController.player.PerdeVida(1);
         }
     }

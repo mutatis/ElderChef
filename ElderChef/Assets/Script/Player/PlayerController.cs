@@ -10,6 +10,8 @@ public class PlayerController : MonoBehaviour
 
     public int life;
 
+    public bool pimenta;
+
     void Awake()
     {
         player = this;
@@ -21,6 +23,12 @@ public class PlayerController : MonoBehaviour
         {
             SceneManager.LoadScene("GameOver");
         }
+    }
+
+    IEnumerator Pimenta()
+    {
+        yield return new WaitForSeconds(15);
+        pimenta = false;
     }
 
     public void PerdeVida(int perdeu)

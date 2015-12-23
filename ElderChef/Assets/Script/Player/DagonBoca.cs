@@ -25,6 +25,7 @@ public class DagonBoca : MonoBehaviour
         {
             AudioSource.PlayClipAtPoint(eat, new Vector3(0, 0, -10));
             dagon.SetTrigger("Mastiga");
+            obj.GetComponent<BoxCollider2D>().enabled = false;
             StartCoroutine("GO");
         }
     }
@@ -35,6 +36,10 @@ public class DagonBoca : MonoBehaviour
         {
             obj = other.gameObject;
             Verifica();
+        }
+        else if (other.gameObject.tag == "Pimenta")
+        {
+            LevelManager.levelManager.DagonQuente();
         }
     }
 }

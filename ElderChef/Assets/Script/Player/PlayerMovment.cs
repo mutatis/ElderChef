@@ -11,6 +11,8 @@ public class PlayerMovment : MonoBehaviour
 
     public Sprite[] images;
 
+    public Transform[] posicoes;
+
     public Animator anim;
     
     public float velX;
@@ -163,6 +165,7 @@ public class PlayerMovment : MonoBehaviour
         }
         isMov = false;
         anim.SetBool("Run", false);
+        transform.position = new Vector3(posicoes[bloco - 2].position.x, transform.position.y, transform.position.z);
         StopCoroutine("GO");
     }
 
