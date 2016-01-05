@@ -30,6 +30,7 @@ public class Alimento : MonoBehaviour
     int minX;
     int maxX;
     int bloco;
+    int saveFrito;
 
 	void Start ()
     {
@@ -40,6 +41,7 @@ public class Alimento : MonoBehaviour
         maxX = Limits.limit.trans.Length;
         cozinho = nCozimento;
         frito = nCozimento / 2;
+        saveFrito = nCozimento;
 	}
 	
 	void Update ()
@@ -53,6 +55,12 @@ public class Alimento : MonoBehaviour
         {
             sprite.color = Color.black;
         }
+
+        if(saveFrito <= 0)
+        {
+            Destroy(gameObject);
+        }
+
         if(segue)
         {
             dist = Vector2.Distance(Limits.limit.trans[escolha].position, transform.position);
@@ -89,6 +97,10 @@ public class Alimento : MonoBehaviour
             {
                 frito -= 1;
             }
+            else if (saveFrito > 0)
+            {
+                saveFrito -= 1;
+            }
             else
             {
                 sumiu = true;
@@ -108,9 +120,13 @@ public class Alimento : MonoBehaviour
                 {
                     cozinho -= 1;
                 }
-                else if (frito > 0)
+                else if (frito > 1)
                 {
                     frito -= 1;
+                }
+                else if(saveFrito > 0)
+                {
+                    saveFrito -= 1;
                 }
                 LevelManager.levelManager.AddPonto(1);
                 PlayerPrefs.SetInt("Panelada", (PlayerPrefs.GetInt("Panelada") + 1));

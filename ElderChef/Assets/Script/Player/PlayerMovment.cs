@@ -13,6 +13,8 @@ public class PlayerMovment : MonoBehaviour
 
     public Transform[] posicoes;
 
+    public Dagon dagon;
+
     public Animator anim;
     
     public float velX;
@@ -39,6 +41,7 @@ public class PlayerMovment : MonoBehaviour
             {
                 if (transform.localScale.x > 0)
                 {
+                    dagon.vira = true;
                     AudioSource.PlayClipAtPoint(mexe[1], new Vector3(0, 0, -10));
                     anim.SetFloat("Vira", -1);
                     anim.SetTrigger("Esquerda");
@@ -56,6 +59,7 @@ public class PlayerMovment : MonoBehaviour
             {
                 if (transform.localScale.x < 0)
                 {
+                    dagon.vira = true;
                     AudioSource.PlayClipAtPoint(mexe[1], new Vector3(0, 0, -10));
                     anim.SetFloat("Vira", 1);
                     anim.SetTrigger("Direita");
@@ -76,18 +80,21 @@ public class PlayerMovment : MonoBehaviour
     {
         pode = false;
         transform.localScale = new Vector3(1.25f, transform.localScale.y, transform.localScale.z);
+        dagon.Play();
     }
 
     public void ViroEsquerda()
     {
         pode = false;
         transform.localScale = new Vector3(-1.25f, transform.localScale.y, transform.localScale.z);
+        dagon.Play();
     }
 
     public void Vira()
     {
         if (transform.localScale.x < 0)
         {
+            dagon.vira = true;
             AudioSource.PlayClipAtPoint(mexe[1], new Vector3(0, 0, -10));
             anim.SetFloat("Vira", 1);
             anim.SetTrigger("Direita");
@@ -95,6 +102,7 @@ public class PlayerMovment : MonoBehaviour
         }
         else if (transform.localScale.x > 0)
         {
+            dagon.vira = true;
             AudioSource.PlayClipAtPoint(mexe[1], new Vector3(0, 0, -10));
             anim.SetFloat("Vira", -1);
             anim.SetTrigger("Esquerda");
