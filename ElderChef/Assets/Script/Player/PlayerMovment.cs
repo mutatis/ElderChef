@@ -124,8 +124,8 @@ public class PlayerMovment : MonoBehaviour
     
     public void Esquerda()
     {
-        if (!pode)
-        {
+       // if (!pode)
+      //  {
             /*if (transform.localScale.x > 0)
             {
                 AudioSource.PlayClipAtPoint(mexe[1], new Vector3(0, 0, -10));
@@ -140,13 +140,13 @@ public class PlayerMovment : MonoBehaviour
                 StopCoroutine("GO");
                 StartCoroutine("GO");
             }
-        }
+        //}
     }
     
     public void Direita()
     {
-        if (!pode)
-        {
+       // if (!pode)
+      //  {
             AudioSource.PlayClipAtPoint(mexe[1], new Vector3(0, 0, -10));
            /* if (transform.localScale.x < 0)
             {
@@ -161,7 +161,7 @@ public class PlayerMovment : MonoBehaviour
                 StopCoroutine("GO");
                 StartCoroutine("GO");
             }
-        }
+      //  }
     }
 
     IEnumerator GO()
