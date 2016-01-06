@@ -22,14 +22,12 @@ public class Alimento : MonoBehaviour
     Vector2 x;
     
     float dist;
-
-    bool sumiu;
+    
     bool segue;
 
     int escolha;
     int minX;
     int maxX;
-    int bloco;
     int saveFrito;
 
 	void Start ()
@@ -46,7 +44,6 @@ public class Alimento : MonoBehaviour
 	
 	void Update ()
     {
-        bloco = PlayerMovment.player.bloco;
         if(cozinho <= 0 && frito > 0)
         {
             sprite.color = new Color(1, 0.87f, 0.44f, 1);
@@ -100,10 +97,6 @@ public class Alimento : MonoBehaviour
             else if (saveFrito > 0)
             {
                 saveFrito -= 1;
-            }
-            else
-            {
-                sumiu = true;
             }
             if (escolha > 1)
             {

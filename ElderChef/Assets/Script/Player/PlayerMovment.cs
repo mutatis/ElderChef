@@ -94,7 +94,7 @@ public class PlayerMovment : MonoBehaviour
 
     IEnumerator Pode()
     {
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.15f);
         pode = false;
         StopCoroutine("Pode");
     }
