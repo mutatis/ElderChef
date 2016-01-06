@@ -78,35 +78,47 @@ public class PlayerMovment : MonoBehaviour
 
     public void ViroDireita()
     {
-        pode = false;
+        StartCoroutine("Pode");
+        //pode = false;
         transform.localScale = new Vector3(1.25f, transform.localScale.y, transform.localScale.z);
         dagon.Play();
     }
 
     public void ViroEsquerda()
     {
-        pode = false;
+        StartCoroutine("Pode");
+        //pode = false;
         transform.localScale = new Vector3(-1.25f, transform.localScale.y, transform.localScale.z);
         dagon.Play();
     }
 
+    IEnumerator Pode()
+    {
+        yield return new WaitForSeconds(0.2f);
+        pode = false;
+        StopCoroutine("Pode");
+    }
+
     public void Vira()
     {
-        if (transform.localScale.x < 0)
+        if (!pode)
         {
-            dagon.vira = true;
-            AudioSource.PlayClipAtPoint(mexe[1], new Vector3(0, 0, -10));
-            anim.SetFloat("Vira", 1);
-            anim.SetTrigger("Direita");
-            pode = true;
-        }
-        else if (transform.localScale.x > 0)
-        {
-            dagon.vira = true;
-            AudioSource.PlayClipAtPoint(mexe[1], new Vector3(0, 0, -10));
-            anim.SetFloat("Vira", -1);
-            anim.SetTrigger("Esquerda");
-            pode = true;
+            if (transform.localScale.x < 0)
+            {
+                dagon.vira = true;
+                AudioSource.PlayClipAtPoint(mexe[1], new Vector3(0, 0, -10));
+                anim.SetFloat("Vira", 1);
+                anim.SetTrigger("Direita");
+                pode = true;
+            }
+            else if (transform.localScale.x > 0)
+            {
+                dagon.vira = true;
+                AudioSource.PlayClipAtPoint(mexe[1], new Vector3(0, 0, -10));
+                anim.SetFloat("Vira", -1);
+                anim.SetTrigger("Esquerda");
+                pode = true;
+            }
         }
     }
     

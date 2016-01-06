@@ -49,7 +49,7 @@ public class Alimento : MonoBehaviour
         bloco = PlayerMovment.player.bloco;
         if(cozinho <= 0 && frito > 0)
         {
-            sprite.color = Color.blue;
+            sprite.color = new Color(1, 0.87f, 0.44f, 1);
         }
         else if(frito <= 0)
         {
