@@ -20,6 +20,21 @@ public class Libero : MonoBehaviour
 
     public void Show()
     {
-        MobileNativeMessage msg = new MobileNativeMessage(title, descricao);
+        MobileNativeDialog msg = new MobileNativeDialog(title, descricao);
+        msg.OnComplete += OnDialogClose;
+    }
+
+    private void OnDialogClose(MNDialogResult result)
+    {
+        //parsing result
+        switch (result)
+        {
+            case MNDialogResult.YES:
+                Application.OpenURL("https://unionassets.com/mobile-native-popups/showing-dialog-pop-up-58");
+                break;
+            case MNDialogResult.NO:
+                Debug.Log("No button pressed");
+                break;
+        }
     }
 }
