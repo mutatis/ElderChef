@@ -23,7 +23,7 @@ public class PlayerMovment : MonoBehaviour
     public int bloco = 3;
 
     bool isMov;
-    bool pode;
+    public bool pode;
 
     int nImage;
     int num;
@@ -194,6 +194,14 @@ public class PlayerMovment : MonoBehaviour
         if (other.gameObject.tag == "Alimento")
         {
             anim.SetTrigger("Fritando");
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Alimento")
+        {
+            pode = false;
         }
     }
 }
