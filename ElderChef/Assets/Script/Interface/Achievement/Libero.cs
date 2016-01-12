@@ -6,21 +6,30 @@ public class Libero : MonoBehaviour
 {
     public Image sprite;
 
-    public string achievementName = "Unlock";
-    public string title;
+    public Text text;
+
+    public Slider sli;
+
+    public string achievementName = "Nome do playerprefs q verifica se libero";
     public string descricao;
+
+    //valor q precisa pra libera;
+    public int valorLibera;
 
     void Start()
     {
-        if(PlayerPrefs.GetInt(achievementName) == 1)
+        sli.maxValue = valorLibera;
+        sli.value = PlayerPrefs.GetInt(achievementName);
+        text.text = PlayerPrefs.GetInt(achievementName).ToString() + " / " + valorLibera.ToString();
+        if (PlayerPrefs.GetInt(achievementName) >= 3)
         {
-            sprite.color = Color.white;
+            //mostra q libero;
         }
     }
 
     public void Show()
     {
-        MobileNativeDialog msg = new MobileNativeDialog(title, descricao);
+        MobileNativeDialog msg = new MobileNativeDialog(achievementName, descricao);
         msg.OnComplete += OnDialogClose;
     }
 

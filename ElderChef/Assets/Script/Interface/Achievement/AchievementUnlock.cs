@@ -8,12 +8,17 @@ public class AchievementUnlock : MonoBehaviour
 
 	void Update ()
     {
-	    if(PlayerPrefs.GetInt("Panelada") == 3 && PlayerPrefs.GetInt("UnlockPanelator") == 0)
+	    if(PlayerPrefs.GetInt("Panelator") == 3 && PlayerPrefs.GetInt("UnlockPanelator") == 0)
         {
             Unlock("Panelator");
             PlayerPrefs.SetInt("UnlockPanelator", 1);
         }
-	}
+        else if (PlayerPrefs.GetInt("Ovo") == 50 && PlayerPrefs.GetInt("UnlockOvo") == 0)
+        {
+            Unlock("Ovo");
+            PlayerPrefs.SetInt("UnlockOvo", 1);
+        }
+    }
 
     void Unlock(string name)
     {

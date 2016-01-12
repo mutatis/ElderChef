@@ -8,6 +8,8 @@ public class Alimento : MonoBehaviour
 
     public SpriteRenderer sprite;
 
+    public Animator frita;
+
     public AudioClip bate;
     public AudioClip joga;
 
@@ -46,11 +48,11 @@ public class Alimento : MonoBehaviour
     {
         if(cozinho <= 0 && frito > 0)
         {
-            sprite.color = new Color(1, 0.87f, 0.44f, 1);
+            frita.SetTrigger("Frito");
         }
         else if(frito <= 0)
         {
-            sprite.color = Color.black;
+            sprite.color = new Color(0.24f, 0.24f, 0.24f);
         }
 
         if(saveFrito <= 0)
@@ -63,7 +65,7 @@ public class Alimento : MonoBehaviour
             dist = Vector2.Distance(Limits.limit.trans[escolha].position, transform.position);
             if(dist > 0.05f)
             {
-                transform.position = Vector2.Lerp(transform.position, new Vector2(x.x, transform.position.y), Time.deltaTime * 1);
+                transform.position = Vector2.Lerp(transform.position, new Vector2(x.x, transform.position.y), Time.deltaTime * 0.8f);
             }
             else
             {
@@ -76,7 +78,7 @@ public class Alimento : MonoBehaviour
     {
         escolha = Random.Range(min, max);
         x = Limits.limit.trans[escolha].position;
-        float y = 7.5f;
+        float y = 5.5f;
         rig.velocity = new Vector3(0, y, 0);
         segue = true;
     }
@@ -122,14 +124,14 @@ public class Alimento : MonoBehaviour
                     saveFrito -= 1;
                 }
                 LevelManager.levelManager.AddPonto(1);
-                PlayerPrefs.SetInt("Panelada", (PlayerPrefs.GetInt("Panelada") + 1));
+                PlayerPrefs.SetInt("Panelator", (PlayerPrefs.GetInt("Panelator") + 1));
             }
 
             PlayerPrefs.SetInt(tipo, PlayerPrefs.GetInt(tipo) + 1);
             
             Jogar(minX, maxX);
             LevelManager.levelManager.AddPonto(1);
-            PlayerPrefs.SetInt("Panelada", (PlayerPrefs.GetInt("Panelada") + 1));
+            PlayerPrefs.SetInt("Panelator", (PlayerPrefs.GetInt("Panelator") + 1));
         }
         else if(other.gameObject.tag == "Chao")
         {
