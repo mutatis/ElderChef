@@ -13,7 +13,12 @@ public class GameOverInterface : MonoBehaviour
     {
         pontos = GameManager.game.pontos;
 
-        text.text = "Você fez " + pontos + " pontos jogo mal seu lixo!!!";
+        if(PlayerPrefs.GetInt("HighScore") < GameManager.game.pontos)
+        {
+            PlayerPrefs.SetInt("HighScore", GameManager.game.pontos);
+        }
+
+        text.text = "Você fez " + pontos + " pontos jogo mal seu lixo!!! Sua melhor pontuação é " + PlayerPrefs.GetInt("HighScore") + "!";
     }
 
     public void Restart(string level)

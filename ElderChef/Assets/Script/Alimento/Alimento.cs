@@ -12,6 +12,7 @@ public class Alimento : MonoBehaviour
 
     public AudioClip bate;
     public AudioClip joga;
+    public AudioClip pronta;
 
     public string tipo;
 
@@ -31,6 +32,7 @@ public class Alimento : MonoBehaviour
     int minX;
     int maxX;
     int saveFrito;
+    int temp;
 
 	void Start ()
     {
@@ -49,6 +51,11 @@ public class Alimento : MonoBehaviour
         if(cozinho <= 0 && frito > 0)
         {
             frita.SetTrigger("Frito");
+            if(temp == 0)
+            {
+                AudioSource.PlayClipAtPoint(pronta, new Vector3(0, 0, -10));
+                temp = 1;
+            }
         }
         else if(frito <= 0)
         {

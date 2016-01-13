@@ -19,6 +19,7 @@ public class LevelManager : MonoBehaviour
     public int pontos;
 
     int n;
+    int num;
 
     bool isPlay;
 
@@ -65,6 +66,15 @@ public class LevelManager : MonoBehaviour
     IEnumerator Created()
     {
         yield return new WaitForSeconds(tempo);
+        num += 1;
+        if(num >= 10)
+        {
+            if (tempo > 2)
+            {
+                tempo = tempo / 1.2f;
+            }
+            num = 0;
+        }
         int x = Random.Range(0, posCreated.Length);
         n = probabilidade.ChooseAlimento();
         Instantiate(alimento[n], posCreated[x].position, transform.rotation);

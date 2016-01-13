@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 4be5b0790d09b6244bcfde2b12b977e7
-timeCreated: 1449163598
+guid: 226abb8349eb9874692cd866433ecd5c
+timeCreated: 1452704533
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName: {}
@@ -23,11 +23,11 @@ TextureImporter:
   grayScaleToAlpha: 0
   generateCubemap: 0
   cubemapConvolution: 0
-  cubemapConvolutionSteps: 8
+  cubemapConvolutionSteps: 7
   cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
   textureFormat: -1
-  maxTextureSize: 256
+  maxTextureSize: 1024
   textureSettings:
     filterMode: -1
     aniso: 16
@@ -51,7 +51,7 @@ TextureImporter:
   spriteSheet:
     sprites: []
     outline: []
-  spritePackingTag: Achievment
+  spritePackingTag: DagonFire
   userData: 
   assetBundleName: 
   assetBundleVariant: 
