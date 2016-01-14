@@ -38,7 +38,6 @@ public class Alimento : MonoBehaviour
 
 	void Start ()
     {
-        LevelManager.levelManager.AddItem(gameObject);
         AudioSource.PlayClipAtPoint(joga, new Vector3(0, 0, -10));
         Jogar(0, Limits.limit.trans.Length);
         minX = 0;
@@ -66,12 +65,7 @@ public class Alimento : MonoBehaviour
 
         if(saveFrito <= 0)
         {
-            frita.SetTrigger("Queimo");
-            if(temp == 1)
-            {
-                audio.Play();
-                temp = 2;
-            }
+            Queima();
         }
 
         if(segue)
@@ -87,6 +81,16 @@ public class Alimento : MonoBehaviour
             }
         }
 	}
+
+    public void Queima()
+    {
+        frita.SetTrigger("Queimo");
+        if (temp == 1)
+        {
+            audio.Play();
+            temp = 2;
+        }
+    }
 
     public void Tchau()
     {
@@ -155,7 +159,6 @@ public class Alimento : MonoBehaviour
         else if(other.gameObject.tag == "Chao")
         {
             PlayerPrefs.SetInt("ErroDagon", PlayerPrefs.GetInt("ErroDagon") + 1);
-            LevelManager.levelManager.RemoveItem(gameObject);
             PlayerController.player.PerdeVida(1);
         }
     }

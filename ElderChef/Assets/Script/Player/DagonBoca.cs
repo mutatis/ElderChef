@@ -6,6 +6,7 @@ public class DagonBoca : MonoBehaviour
     public Animator dagon;
 
     public AudioClip eat;
+    public GameObject fogo;
 
     GameObject obj;
 
@@ -39,7 +40,17 @@ public class DagonBoca : MonoBehaviour
         }
         else if (other.gameObject.tag == "Pimenta")
         {
-            LevelManager.levelManager.DagonQuente();
+            dagon.SetBool("Pimenta", true);
+            fogo.SetActive(true);
+            StartCoroutine("Pimenta");
         }
+    }
+
+    IEnumerator Pimenta()
+    {
+        yield return new WaitForSeconds(15);
+        dagon.SetBool("Pimenta", false);
+        fogo.SetActive(false);
+        StopCoroutine("Pimenta");
     }
 }

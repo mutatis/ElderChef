@@ -12,8 +12,6 @@ public class LevelManager : MonoBehaviour
 
     public GameObject[] alimento;
 
-    public List<GameObject> controll = new List<GameObject>();
-
     public Animator[] elder;
 
     public float tempo;
@@ -40,24 +38,6 @@ public class LevelManager : MonoBehaviour
             Instantiate(alimento[n], posCreated[x].position, transform.rotation);
             StartCoroutine("Created");
             isPlay = true;
-        }
-    }
-
-    public void RemoveItem(GameObject obj)
-    {
-        controll.Remove(obj);
-    }
-
-    public void AddItem(GameObject obj)
-    {
-        controll.Add(obj);
-    }
-
-    public void DagonQuente()
-    {
-        for(int i = 0; i < controll.Count; i++)
-        {
-            Destroy(controll[i]);
         }
     }
 

@@ -45,7 +45,7 @@ public class PlayerMovment : MonoBehaviour
                 {
                     dagon.vira = true;
                     fogo.vira = true;
-                    AudioSource.PlayClipAtPoint(mexe, new Vector3(0, 0, -10));
+                    AudioSource.PlayClipAtPoint(mexe, new Vector3(0, 0, -10), 0.8f);
                     anim.SetFloat("Vira", -1);
                     anim.SetTrigger("Esquerda");
                     pode = true;
@@ -54,7 +54,7 @@ public class PlayerMovment : MonoBehaviour
                 {
                     bloco -= 1;
                     num = -1;
-                    AudioSource.PlayClipAtPoint(mexe, new Vector3(0, 0, -10));
+                    AudioSource.PlayClipAtPoint(mexe, new Vector3(0, 0, -10), 0.8f);
                     StartCoroutine("GO");
                 }
             }
@@ -64,7 +64,7 @@ public class PlayerMovment : MonoBehaviour
                 {
                     dagon.vira = true;
                     fogo.vira = true;
-                    AudioSource.PlayClipAtPoint(mexe, new Vector3(0, 0, -10));
+                    AudioSource.PlayClipAtPoint(mexe, new Vector3(0, 0, -10), 0.8f);
                     anim.SetFloat("Vira", 1);
                     anim.SetTrigger("Direita");
                     pode = true;
@@ -73,7 +73,7 @@ public class PlayerMovment : MonoBehaviour
                 {
                     bloco += 1;
                     num = 1;
-                    AudioSource.PlayClipAtPoint(mexe, new Vector3(0, 0, -10));
+                    AudioSource.PlayClipAtPoint(mexe, new Vector3(0, 0, -10), 0.8f);
                     StartCoroutine("GO");
                 }
             }
@@ -113,7 +113,7 @@ public class PlayerMovment : MonoBehaviour
             {
                 dagon.vira = true;
                 fogo.vira = true;
-                AudioSource.PlayClipAtPoint(mexe, new Vector3(0, 0, -10));
+                AudioSource.PlayClipAtPoint(mexe, new Vector3(0, 0, -10), 0.8f);
                 anim.SetFloat("Vira", 1);
                 anim.SetTrigger("Direita");
                 pode = true;
@@ -122,7 +122,7 @@ public class PlayerMovment : MonoBehaviour
             {
                 dagon.vira = true;
                 fogo.vira = true;
-                AudioSource.PlayClipAtPoint(mexe, new Vector3(0, 0, -10));
+                AudioSource.PlayClipAtPoint(mexe, new Vector3(0, 0, -10), 0.8f);
                 anim.SetFloat("Vira", -1);
                 anim.SetTrigger("Esquerda");
                 pode = true;
@@ -144,7 +144,7 @@ public class PlayerMovment : MonoBehaviour
             {
                 bloco -= 1;
                 num = -1;
-                AudioSource.PlayClipAtPoint(mexe, new Vector3(0, 0, -10));
+                AudioSource.PlayClipAtPoint(mexe, new Vector3(0, 0, -10), 0.8f);
                 StopCoroutine("GO");
                 StartCoroutine("GO");
             }
@@ -155,7 +155,7 @@ public class PlayerMovment : MonoBehaviour
     {
        // if (!pode)
       //  {
-            AudioSource.PlayClipAtPoint(mexe, new Vector3(0, 0, -10));
+            AudioSource.PlayClipAtPoint(mexe, new Vector3(0, 0, -10), 0.8f);
            /* if (transform.localScale.x < 0)
             {
                 anim.SetTrigger("Direita");
@@ -165,7 +165,7 @@ public class PlayerMovment : MonoBehaviour
             {
                 bloco += 1;
                 num = 1;
-                AudioSource.PlayClipAtPoint(mexe, new Vector3(0, 0, -10));
+                AudioSource.PlayClipAtPoint(mexe, new Vector3(0, 0, -10), 0.8f);
                 StopCoroutine("GO");
                 StartCoroutine("GO");
             }
