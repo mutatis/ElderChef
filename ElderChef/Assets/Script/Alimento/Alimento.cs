@@ -10,6 +10,8 @@ public class Alimento : MonoBehaviour
 
     public Animator frita;
 
+    public AudioSource audio;
+
     public AudioClip bate;
     public AudioClip joga;
     public AudioClip pronta;
@@ -64,7 +66,12 @@ public class Alimento : MonoBehaviour
 
         if(saveFrito <= 0)
         {
-            Destroy(gameObject);
+            frita.SetTrigger("Queimo");
+            if(temp == 1)
+            {
+                audio.Play();
+                temp = 2;
+            }
         }
 
         if(segue)
@@ -80,6 +87,11 @@ public class Alimento : MonoBehaviour
             }
         }
 	}
+
+    public void Tchau()
+    {
+        Destroy(gameObject);
+    }
 
     public void Jogar(int min, int max)
     {

@@ -14,6 +14,8 @@ public class LevelManager : MonoBehaviour
 
     public List<GameObject> controll = new List<GameObject>();
 
+    public Animator[] elder;
+
     public float tempo;
 
     public int pontos;
@@ -33,6 +35,7 @@ public class LevelManager : MonoBehaviour
         if(!isPlay && Time.timeScale == 1)
         {
             int x = Random.Range(0, posCreated.Length);
+            elder[x].SetTrigger("Joga");
             n = probabilidade.ChooseAlimento();
             Instantiate(alimento[n], posCreated[x].position, transform.rotation);
             StartCoroutine("Created");
@@ -76,6 +79,7 @@ public class LevelManager : MonoBehaviour
             num = 0;
         }
         int x = Random.Range(0, posCreated.Length);
+        elder[x].SetTrigger("Joga");
         n = probabilidade.ChooseAlimento();
         Instantiate(alimento[n], posCreated[x].position, transform.rotation);
         StartCoroutine("Created");
