@@ -20,12 +20,24 @@ public class LevelManager : MonoBehaviour
 
     int n;
     int num;
+    int tutorial;
 
     bool isPlay;
 
     void Awake()
     {
         levelManager = this;
+    }
+
+    void Start()
+    {
+        if (PlayerPrefs.GetInt("Primeira") == 0)
+        {
+            tempo = 15;
+            tutorial = 1;
+            isPlay = true;
+            StartCoroutine("Created");
+        }
     }
 
     void Update()
@@ -57,6 +69,11 @@ public class LevelManager : MonoBehaviour
                 tempo = tempo / 1.2f;
             }
             num = 0;
+        }
+        if(tutorial == 1)
+        {
+            tempo = 6;
+            tutorial = 2;
         }
         int x = Random.Range(0, posCreated.Length);
         elder[x].SetTrigger("Joga");

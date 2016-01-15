@@ -31,7 +31,14 @@ public class Dagon : MonoBehaviour
         yield return new WaitForSeconds(0.15f);
         vira = false;
         yield return new WaitForSeconds(0.02f);
-        transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+        if (PlayerController.player.transform.localScale.x > 0 && transform.localScale.x < 0)
+        {
+            transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+        }
+        else if(PlayerController.player.transform.localScale.x < 0 && transform.localScale.x > 0)
+        {
+            transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+        }
         StopCoroutine("GO");
     }
 

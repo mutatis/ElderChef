@@ -29,6 +29,7 @@ public class Alimento : MonoBehaviour
     float dist;
     
     bool segue;
+    bool morreu;
 
     int escolha;
     int minX;
@@ -49,36 +50,49 @@ public class Alimento : MonoBehaviour
 	
 	void Update ()
     {
-        if(cozinho <= 0 && frito > 0)
+        if (!morreu)
         {
-            frita.SetTrigger("Frito");
-            if(temp == 0)
+            if (cozinho <= 0 && frito > 0)
             {
-                AudioSource.PlayClipAtPoint(pronta, new Vector3(0, 0, -10));
-                temp = 1;
+                frita.SetTrigger("Frito");
+                if (temp == 0)
+                {
+                    AudioSource.PlayClipAtPoint(pronta, new Vector3(0, 0, -10));
+                    temp = 1;
+                }
+            }
+            else if (frito <= 0)
+            {
+                sprite.color = new Color(0.24f, 0.24f, 0.24f);
+            }
+
+            if (saveFrito <= 0)
+            {
+                Queima();
+            }
+
+            if (segue)
+            {
+                dist = Vector2.Distance(Limits.limit.trans[escolha].position, transform.position);
+                if (dist > 0.05f)
+                {
+                    transform.position = Vector2.Lerp(transform.position, new Vector2(x.x, transform.position.y), Time.deltaTime * 0.8f);
+                }
+                else
+                {
+                    segue = false;
+                }
             }
         }
-        else if(frito <= 0)
+        else
         {
-            sprite.color = new Color(0.24f, 0.24f, 0.24f);
+            transform.position = new Vector3(transform.position.x, -4.7f, transform.position.z);
+            sprite.color = new Color(sprite.color.r, sprite.color.g, sprite.color.b, sprite.color.a - 0.01f);
         }
 
-        if(saveFrito <= 0)
+        if(sprite.color.a <= 0)
         {
-            Queima();
-        }
-
-        if(segue)
-        {
-            dist = Vector2.Distance(Limits.limit.trans[escolha].position, transform.position);
-            if(dist > 0.05f)
-            {
-                transform.position = Vector2.Lerp(transform.position, new Vector2(x.x, transform.position.y), Time.deltaTime * 0.8f);
-            }
-            else
-            {
-                segue = false;
-            }
+            Destroy(gameObject);
         }
 	}
 
@@ -160,6 +174,9 @@ public class Alimento : MonoBehaviour
         {
             PlayerPrefs.SetInt("ErroDagon", PlayerPrefs.GetInt("ErroDagon") + 1);
             PlayerController.player.PerdeVida(1);
+            morreu = true;
+            gameObject.GetComponent<BoxCollider2D>().enabled = false;
+            gameObject.GetComponent<Animator>().enabled = false;
         }
     }
 }

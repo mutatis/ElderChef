@@ -8,17 +8,29 @@ public class GameOverInterface : MonoBehaviour
     public Text text;
 
     int pontos;
+    int save;
+
+    float temp;
 
     void Start()
     {
+        Time.timeScale = 1;
+
         pontos = GameManager.game.pontos;
+    }
 
-        if(PlayerPrefs.GetInt("HighScore") < GameManager.game.pontos)
+    void Update()
+    {
+        if(temp < pontos)
         {
-            PlayerPrefs.SetInt("HighScore", GameManager.game.pontos);
+            text.text = save.ToString();
+            temp += 0.3f;
+            save = (int)temp;
         }
-
-        text.text = "Você fez " + pontos + " pontos jogo mal seu lixo!!! Sua melhor pontuação é " + PlayerPrefs.GetInt("HighScore") + "!";
+        else
+        {
+            text.text = pontos.ToString();
+        }
     }
 
     public void Restart(string level)

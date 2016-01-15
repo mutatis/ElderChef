@@ -8,4 +8,9 @@ public class LoadScene : MonoBehaviour
     {
         SceneManager.LoadScene(cena);
     }
+
+    public void Clico(AudioClip click)
+    {
+        AudioSource.PlayClipAtPoint(click, Camera.main.transform.position);
+    }
 }
