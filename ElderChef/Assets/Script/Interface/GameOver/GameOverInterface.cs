@@ -21,6 +21,11 @@ public class GameOverInterface : MonoBehaviour
 
     void Update()
     {
+        if(Input.GetMouseButtonUp(0))
+        {
+            temp = pontos;
+        }
+
         if(temp < pontos)
         {
             text.text = save.ToString();

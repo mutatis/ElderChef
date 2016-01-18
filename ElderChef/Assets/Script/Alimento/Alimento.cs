@@ -98,6 +98,7 @@ public class Alimento : MonoBehaviour
 
     public void Queima()
     {
+        gameObject.GetComponent<BoxCollider2D>().enabled = false;
         frita.SetTrigger("Queimo");
         if (temp == 1)
         {
