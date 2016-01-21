@@ -10,6 +10,8 @@ public class Alimento : MonoBehaviour
 
     public Animator frita;
 
+    public ParticleSystem particle;
+
     public AudioSource audio;
 
     public AudioClip bate;
@@ -30,6 +32,7 @@ public class Alimento : MonoBehaviour
     
     bool segue;
     bool morreu;
+    bool soltaParte;
 
     int escolha;
     int minX;
@@ -54,6 +57,12 @@ public class Alimento : MonoBehaviour
         {
             if (cozinho <= 0 && frito > 0)
             {
+                if (!soltaParte)
+                {
+                    particle.enableEmission = true;
+                    soltaParte = true;
+                }
+
                 frita.SetTrigger("Frito");
                 if (temp == 0)
                 {

@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 74ef16e560b9f9847bfb65527ff4af82
-timeCreated: 1452877837
+guid: b8b27c77fa2672047ad887a3928deb2c
+timeCreated: 1452878104
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName: {}
@@ -51,7 +51,7 @@ TextureImporter:
   spriteSheet:
     sprites: []
     outline: []
-  spritePackingTag: 
+  spritePackingTag: Botao
   userData: 
   assetBundleName: 
   assetBundleVariant: 
