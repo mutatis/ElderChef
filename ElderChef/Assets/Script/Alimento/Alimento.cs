@@ -160,7 +160,7 @@ public class Alimento : MonoBehaviour
             {
                 if (cozinho > 0)
                 {
-                    cozinho -= 1;
+                    cozinho = 0;
                 }
                 else if (frito > 1)
                 {

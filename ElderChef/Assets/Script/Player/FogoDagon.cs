@@ -8,6 +8,7 @@ public class FogoDagon : MonoBehaviour
         if (other.gameObject.tag == "Alimento")
         {
             other.gameObject.GetComponent<Animator>().SetTrigger("Queimo");
+            other.gameObject.GetComponent<BoxCollider2D>().enabled = false;
         }
     }
 }

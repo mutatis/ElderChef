@@ -7,6 +7,8 @@ public class GameOverInterface : MonoBehaviour
 {
     public Text text;
 
+    public AudioSource audio;
+
     int pontos;
     int save;
 
@@ -24,6 +26,7 @@ public class GameOverInterface : MonoBehaviour
         if(Input.GetMouseButtonUp(0))
         {
             temp = pontos;
+            audio.Stop();
         }
 
         if(temp < pontos)
@@ -35,6 +38,7 @@ public class GameOverInterface : MonoBehaviour
         else
         {
             text.text = pontos.ToString();
+            audio.Stop();
         }
     }
 
