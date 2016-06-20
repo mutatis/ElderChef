@@ -16,11 +16,12 @@ public class LevelManager : MonoBehaviour
 
     public float tempo;
 
-    public int pontos;
+    public int pontos, trocaTempo;
 
     int n;
     int num;
     int tutorial;
+    int troca;
 
     bool isPlay;
 
@@ -31,13 +32,14 @@ public class LevelManager : MonoBehaviour
 
     void Start()
     {
-        if (PlayerPrefs.GetInt("Primeira") == 0)
+        troca = trocaTempo;
+       /* if (PlayerPrefs.GetInt("Primeira") == 0)
         {
             tempo = 15;
             tutorial = 1;
             isPlay = true;
             StartCoroutine("Created");
-        }
+        }*/
     }
 
     void Update()
@@ -60,6 +62,11 @@ public class LevelManager : MonoBehaviour
 
     IEnumerator Created()
     {
+        if (pontos > troca && tempo > 3)
+        {
+            tempo -= 0.5f;
+            troca += trocaTempo;
+        }
         yield return new WaitForSeconds(tempo);
         num += 1;
         if(num >= 10)

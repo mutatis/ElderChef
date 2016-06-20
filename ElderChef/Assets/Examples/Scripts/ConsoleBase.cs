@@ -25,7 +25,6 @@ namespace Facebook.Unity.Example
     using System.Collections.Generic;
     using System.Linq;
     using UnityEngine;
-    using UnityEngine.SceneManagement;
 
     internal class ConsoleBase : MonoBehaviour
     {
@@ -228,14 +227,14 @@ namespace Facebook.Unity.Example
         protected void SwitchMenu(Type menuClass)
         {
             ConsoleBase.menuStack.Push(this.GetType().Name);
-            SceneManager.LoadScene(menuClass.Name);
+            Application.LoadLevel(menuClass.Name);
         }
 
         protected void GoBack()
         {
             if (ConsoleBase.menuStack.Any())
             {
-                SceneManager.LoadScene(ConsoleBase.menuStack.Pop());
+                Application.LoadLevel(ConsoleBase.menuStack.Pop());
             }
         }
     }
