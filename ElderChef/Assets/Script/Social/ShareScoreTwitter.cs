@@ -1,59 +1,29 @@
 ﻿using UnityEngine;
 using System.Collections;
-using Facebook.Unity;
 using System.Collections.Generic;
 
 public class ShareScoreTwitter : MonoBehaviour
 {
     public string messagemTwitter;
 
-    public string titulo; //linkname;
-    public string textoClaro; //linkcaption;
-    public string textoAtencao; //linkdescrition;
-    public string linkDaLoja; //link;
-    public string foto; //picture;
-
-    void Awake()
-    {
-            FB.Init();  
-    }
+    public string AppID = "1399925576886522";
+    public string Link = "https://play.google.com/store/apps/developer?id=Gamestoodio";
+    public string Picture = "http://imageshack.us/scaled/landing/843/gh4o.png";
+    public string Name = "My New Score";
+    public string Caption = "I just got +99 score friends! Can you beat it?";
+    public string Description = "Enjoy fun, free games! Challenge yourself or share with friends. Fun and easy-to-use game.";
 
     public void Share()
     {
-        print("Loggin");
-
-        if(!FB.IsLoggedIn)
-        {
-            FBLoggin();
-        }
-        else
-        {
-            FB.FeedShare(
-                            link: new System.Uri(linkDaLoja),
-                            linkName: titulo,
-                            linkCaption: textoClaro,
-                            linkDescription: textoAtencao,
-                            picture: new System.Uri(foto)
-                        );
-        }
+        Application.OpenURL("https://www.facebook.com/dialog/feed?" + "app_id=" + AppID + "&link=" +
+                            Link + "&picture=" + Picture + "&name=" + ReplaceSpace(Name) + "&caption=" +
+                            ReplaceSpace(Caption) + "&description=" + ReplaceSpace(Description) +
+                            "&redirect_uri=https://facebook.com/");
     }
 
-    void FBLoggin()
+    string ReplaceSpace(string val)
     {
-        var perms = new List<string>() { "public_profile", "user_about_me" };
-        FB.LogInWithReadPermissions(perms, AuthCallback);
-    }
-
-    void AuthCallback(IResult result)
-    {
-        if(FB.IsLoggedIn)
-        {
-            print("LOGO");
-        }
-        else
-        {
-            print("NAOLOGO");
-        }
+        return val.Replace(" ", "%20");
     }
 
     public void ShareTwitter()

@@ -19,7 +19,7 @@ public class PlayerMovment : MonoBehaviour
     public Animator anim;
     public Animator fogoPai;
     
-    public float velX;
+    public float velX, volume;
 
     [HideInInspector]
     public int bloco = 3;
@@ -45,7 +45,7 @@ public class PlayerMovment : MonoBehaviour
                 {
                     dagon.vira = true;
                     fogo.vira = true;
-                    AudioSource.PlayClipAtPoint(mexe, new Vector3(0, 0, -10), 0.8f);
+                    AudioSource.PlayClipAtPoint(mexe, new Vector3(0, 0, -10), volume);
                     anim.SetFloat("Vira", -1);
                     anim.SetTrigger("Esquerda");
                     pode = true;
@@ -54,7 +54,7 @@ public class PlayerMovment : MonoBehaviour
                 {
                     bloco -= 1;
                     num = -1;
-                    AudioSource.PlayClipAtPoint(mexe, new Vector3(0, 0, -10), 0.8f);
+                    AudioSource.PlayClipAtPoint(mexe, new Vector3(0, 0, -10), volume);
                     StartCoroutine("GO");
                 }
             }
@@ -64,7 +64,7 @@ public class PlayerMovment : MonoBehaviour
                 {
                     dagon.vira = true;
                     fogo.vira = true;
-                    AudioSource.PlayClipAtPoint(mexe, new Vector3(0, 0, -10), 0.8f);
+                    AudioSource.PlayClipAtPoint(mexe, new Vector3(0, 0, -10), volume);
                     anim.SetFloat("Vira", 1);
                     anim.SetTrigger("Direita");
                     pode = true;
@@ -73,7 +73,7 @@ public class PlayerMovment : MonoBehaviour
                 {
                     bloco += 1;
                     num = 1;
-                    AudioSource.PlayClipAtPoint(mexe, new Vector3(0, 0, -10), 0.8f);
+                    AudioSource.PlayClipAtPoint(mexe, new Vector3(0, 0, -10), volume);
                     StartCoroutine("GO");
                 }
             }
@@ -113,7 +113,7 @@ public class PlayerMovment : MonoBehaviour
             {
                 dagon.vira = true;
                 fogo.vira = true;
-                AudioSource.PlayClipAtPoint(mexe, new Vector3(0, 0, -10), 0.8f);
+                AudioSource.PlayClipAtPoint(mexe, new Vector3(0, 0, -10), volume);
                 anim.SetFloat("Vira", 1);
                 anim.SetTrigger("Direita");
                 pode = true;
@@ -122,7 +122,7 @@ public class PlayerMovment : MonoBehaviour
             {
                 dagon.vira = true;
                 fogo.vira = true;
-                AudioSource.PlayClipAtPoint(mexe, new Vector3(0, 0, -10), 0.8f);
+                AudioSource.PlayClipAtPoint(mexe, new Vector3(0, 0, -10), volume);
                 anim.SetFloat("Vira", -1);
                 anim.SetTrigger("Esquerda");
                 pode = true;
@@ -144,7 +144,7 @@ public class PlayerMovment : MonoBehaviour
             {
                 bloco -= 1;
                 num = -1;
-                AudioSource.PlayClipAtPoint(mexe, new Vector3(0, 0, -10), 0.8f);
+                AudioSource.PlayClipAtPoint(mexe, new Vector3(0, 0, -10), volume);
                 StopCoroutine("GO");
                 StartCoroutine("GO");
             }
@@ -155,7 +155,7 @@ public class PlayerMovment : MonoBehaviour
     {
        // if (!pode)
       //  {
-            AudioSource.PlayClipAtPoint(mexe, new Vector3(0, 0, -10), 0.8f);
+            AudioSource.PlayClipAtPoint(mexe, new Vector3(0, 0, -10), volume);
            /* if (transform.localScale.x < 0)
             {
                 anim.SetTrigger("Direita");
@@ -165,7 +165,7 @@ public class PlayerMovment : MonoBehaviour
             {
                 bloco += 1;
                 num = 1;
-                AudioSource.PlayClipAtPoint(mexe, new Vector3(0, 0, -10), 0.8f);
+                AudioSource.PlayClipAtPoint(mexe, new Vector3(0, 0, -10), volume);
                 StopCoroutine("GO");
                 StartCoroutine("GO");
             }
@@ -178,7 +178,7 @@ public class PlayerMovment : MonoBehaviour
         isMov = true;
         for (int i = 0; i < 6; i++)
         {
-            transform.Translate((velX * num)/3.5f, 0, 0);
+            transform.Translate((velX * num)/3.5f, 0, 0, Space.World);
             if (nImage == 0)
             {
                 sprite.sprite = images[1];

@@ -42,7 +42,7 @@ public class Alimento : MonoBehaviour
 
 	void Start ()
     {
-        AudioSource.PlayClipAtPoint(joga, new Vector3(0, 0, -10));
+        AudioSource.PlayClipAtPoint(joga, new Vector3(0, 0, -10), 0.3f);
         Jogar(0, Limits.limit.trans.Length);
         minX = 0;
         maxX = Limits.limit.trans.Length;

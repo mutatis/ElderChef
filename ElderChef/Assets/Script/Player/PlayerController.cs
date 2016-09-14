@@ -12,6 +12,8 @@ public class PlayerController : MonoBehaviour
 
     public bool pimenta;
 
+    public float volume;
+
     void Awake()
     {
         player = this;
@@ -33,7 +35,7 @@ public class PlayerController : MonoBehaviour
 
     public void PerdeVida(int perdeu)
     {
-        AudioSource.PlayClipAtPoint(this.perdeu, new Vector3(0, 0, -10));
+        AudioSource.PlayClipAtPoint(this.perdeu, new Vector3(0, 0, -10), volume);
         life -= perdeu;
     }
 }

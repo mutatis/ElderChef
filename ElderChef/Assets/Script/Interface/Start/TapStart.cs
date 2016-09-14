@@ -4,7 +4,6 @@ using UnityEngine.UI;
 
 public class TapStart : MonoBehaviour
 {
-    public GameObject tutorial;
 
     void Start()
     {
@@ -18,15 +17,7 @@ public class TapStart : MonoBehaviour
 
     public void Click(GameObject obj)
     {
-        if (PlayerPrefs.GetInt("Primeira") == 0)
-        {
-            tutorial.SetActive(true);
-            PlayerPrefs.SetInt("Primeira", 1);
-        }
-        else
-        {
-            Time.timeScale = 1;
-        } 
+        Time.timeScale = 1;
         PlayerPrefs.SetInt("Jogadas", PlayerPrefs.GetInt("Jogadas") + 1);
         Destroy(obj);
     }
